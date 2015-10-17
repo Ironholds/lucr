@@ -10,7 +10,9 @@ oer_query <- function(path, key, ...){
   
   # Format result and return it
   result <- httr::content(result)
-  result$timestamp <- as.POSIXct(result$timestamp, origin="1970-01-01")
+  if("timestamp" %in% names(result)){
+    result$timestamp <- as.POSIXct(result$timestamp, origin="1970-01-01")
+  }
   return(result)
 }
 
@@ -62,3 +64,24 @@ currency_convert <- function(x, from, to, key, ...){
   return( (x / intermediary_rate) * conversion_rate)
 }
 
+#'@title Find Supported Currencies
+#'@description Generates a list of the currencies supported by \code{\link{currency_convert}}.
+#'
+#'@param key Your Open Exchange Rates API key. See their \href{https://openexchangerates.org/signup}{access plans}
+#'(particularly the 'forever free' plan linked at the bottom).
+#'
+#'@param as_df Whether to return the results as a data.frame. If not, it will be a named list. Set to FALSE
+#'by default.
+#'
+#'@param ... Further arguments to pass to httr's \code{GET} function.
+#'
+#'@export
+list_currencies <- function(key, as_df = FALSE, ...){
+  results <- oer_query("currencies.json", key, ...)
+  if(as_df){
+    return(data.frame(code = names(results),
+                      name = results,
+                      stringsAsFactors = FALSE))
+  }
+  return(results)
+}
