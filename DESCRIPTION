@@ -1,0 +1,13 @@
+Package: rrency
+Title: Currency Formatting and Conversion
+Version: 0.0.9000
+Author: Oliver Keyes
+Maintainer: Oliver Keyes <ironholds@gmail.com>
+Description: Reformat currency-based data as numeric values (or numeric values as currency-based data) and convert between currencies.
+License: MIT + file LICENSE
+LazyData: true
+URL: https://github.com/ironholds/rrency
+BugReports: https://github.com/ironholds/rrency/issues
+LinkingTo: Rcpp
+Imports: Rcpp,
+         httr
