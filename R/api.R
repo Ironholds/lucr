@@ -80,7 +80,7 @@ list_currencies <- function(key, as_df = FALSE, ...){
   results <- oer_query("currencies.json", key, ...)
   if(as_df){
     return(data.frame(code = names(results),
-                      name = results,
+                      name = unlist(results),
                       stringsAsFactors = FALSE))
   }
   return(results)
