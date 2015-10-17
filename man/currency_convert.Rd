@@ -4,12 +4,12 @@
 \alias{currency_convert}
 \title{Convert between currencies using the Open Exchange Rates API}
 \usage{
-currency_convert(x, from, to, key, ...)
+currency_convert(x, from = "USD", to, key, ...)
 }
 \arguments{
 \item{x}{a vector of amounts, formatted as integer or numeric values.}
 
-\item{from}{the currency \code{x} is currently in.}
+\item{from}{the currency \code{x} is currently in. US Dollars by default.}
 
 \item{to}{the currency you \emph{want} \code{x} to be in.}
 
