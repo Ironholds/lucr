@@ -2,6 +2,7 @@
 
 export(conversion_rates)
 export(currency_convert)
+export(from_currency)
 export(historic_currency)
 export(list_currencies)
 export(to_currency)

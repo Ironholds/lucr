@@ -5,35 +5,31 @@
 
 using namespace Rcpp;
 
-// currency_format_int
-std::vector < std::string > currency_format_int(std::vector < int > x, std::string symbol, bool symbol_first, unsigned int grouping, std::string decimal, std::string group);
-RcppExport SEXP rrency_currency_format_int(SEXP xSEXP, SEXP symbolSEXP, SEXP symbol_firstSEXP, SEXP groupingSEXP, SEXP decimalSEXP, SEXP groupSEXP) {
+// currency_format_
+std::vector < std::string > currency_format_(std::vector < std::string > x, std::string symbol, bool symbol_first, unsigned int grouping, std::string decimal, std::string group);
+RcppExport SEXP rrency_currency_format_(SEXP xSEXP, SEXP symbolSEXP, SEXP symbol_firstSEXP, SEXP groupingSEXP, SEXP decimalSEXP, SEXP groupSEXP) {
 BEGIN_RCPP
     Rcpp::RObject __result;
     Rcpp::RNGScope __rngScope;
-    Rcpp::traits::input_parameter< std::vector < int > >::type x(xSEXP);
+    Rcpp::traits::input_parameter< std::vector < std::string > >::type x(xSEXP);
     Rcpp::traits::input_parameter< std::string >::type symbol(symbolSEXP);
     Rcpp::traits::input_parameter< bool >::type symbol_first(symbol_firstSEXP);
     Rcpp::traits::input_parameter< unsigned int >::type grouping(groupingSEXP);
     Rcpp::traits::input_parameter< std::string >::type decimal(decimalSEXP);
     Rcpp::traits::input_parameter< std::string >::type group(groupSEXP);
-    __result = Rcpp::wrap(currency_format_int(x, symbol, symbol_first, grouping, decimal, group));
+    __result = Rcpp::wrap(currency_format_(x, symbol, symbol_first, grouping, decimal, group));
     return __result;
 END_RCPP
 }
-// currency_format_double
-std::vector < std::string > currency_format_double(std::vector < double > x, std::string symbol, bool symbol_first, unsigned int grouping, std::string decimal, std::string group);
-RcppExport SEXP rrency_currency_format_double(SEXP xSEXP, SEXP symbolSEXP, SEXP symbol_firstSEXP, SEXP groupingSEXP, SEXP decimalSEXP, SEXP groupSEXP) {
+// currency_unformat_
+std::vector < double > currency_unformat_(std::vector < std::string > x, std::string decimal);
+RcppExport SEXP rrency_currency_unformat_(SEXP xSEXP, SEXP decimalSEXP) {
 BEGIN_RCPP
     Rcpp::RObject __result;
     Rcpp::RNGScope __rngScope;
-    Rcpp::traits::input_parameter< std::vector < double > >::type x(xSEXP);
-    Rcpp::traits::input_parameter< std::string >::type symbol(symbolSEXP);
-    Rcpp::traits::input_parameter< bool >::type symbol_first(symbol_firstSEXP);
-    Rcpp::traits::input_parameter< unsigned int >::type grouping(groupingSEXP);
+    Rcpp::traits::input_parameter< std::vector < std::string > >::type x(xSEXP);
     Rcpp::traits::input_parameter< std::string >::type decimal(decimalSEXP);
-    Rcpp::traits::input_parameter< std::string >::type group(groupSEXP);
-    __result = Rcpp::wrap(currency_format_double(x, symbol, symbol_first, grouping, decimal, group));
+    __result = Rcpp::wrap(currency_unformat_(x, decimal));
     return __result;
 END_RCPP
 }
