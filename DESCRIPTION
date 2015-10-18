@@ -11,3 +11,4 @@ BugReports: https://github.com/ironholds/rrency/issues
 LinkingTo: Rcpp
 Imports: Rcpp,
          httr
+Suggests: testthat
