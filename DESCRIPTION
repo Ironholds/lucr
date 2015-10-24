@@ -12,3 +12,4 @@ LinkingTo: Rcpp
 Imports: Rcpp,
          httr
 Suggests: testthat
+Encoding: UTF-8
