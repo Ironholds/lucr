@@ -14,7 +14,7 @@ currency sign, and the currency sign itself;
 ## Installation
 
 ```r
-devtools::install_github("ironholds/rrency")
+devtools::install_github("ironholds/rrency", ref = "0.1.0")
 ```
 
 ## License

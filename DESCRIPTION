@@ -1,6 +1,6 @@
 Package: rrency
 Title: Currency Formatting and Conversion
-Version: 0.0.9000
+Version: 0.1.0
 Author: Oliver Keyes
 Maintainer: Oliver Keyes <ironholds@gmail.com>
 Description: Reformat currency-based data as numeric values (or numeric values as currency-based data) and convert between currencies.
