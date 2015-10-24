@@ -25,7 +25,7 @@
 #'#[1] "£120,000.03"
 #'
 #'@export
-to_currency <- function(x, currency_symbol = "£", symbol_first = TRUE, group_size = 3,
+to_currency <- function(x, currency_symbol = "\u00A3", symbol_first = TRUE, group_size = 3,
                         group_delim = ",", decimal_size = 2, decimal_delim = "."){
   
   if(is.integer(x)){
