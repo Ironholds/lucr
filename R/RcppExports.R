@@ -2,10 +2,10 @@
 # Generator token: 10BE3573-1514-4C36-9D1C-5A225CD40393
 
 currency_format_ <- function(x, symbol, symbol_first, grouping, decimal, group) {
-    .Call('rrency_currency_format_', PACKAGE = 'rrency', x, symbol, symbol_first, grouping, decimal, group)
+    .Call('lucr_currency_format_', PACKAGE = 'lucr', x, symbol, symbol_first, grouping, decimal, group)
 }
 
 currency_unformat_ <- function(x, decimal) {
-    .Call('rrency_currency_unformat_', PACKAGE = 'rrency', x, decimal)
+    .Call('lucr_currency_unformat_', PACKAGE = 'lucr', x, decimal)
 }
 

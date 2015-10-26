@@ -7,7 +7,7 @@ using namespace Rcpp;
 
 // currency_format_
 std::vector < std::string > currency_format_(std::vector < std::string > x, std::string symbol, bool symbol_first, unsigned int grouping, std::string decimal, std::string group);
-RcppExport SEXP rrency_currency_format_(SEXP xSEXP, SEXP symbolSEXP, SEXP symbol_firstSEXP, SEXP groupingSEXP, SEXP decimalSEXP, SEXP groupSEXP) {
+RcppExport SEXP lucr_currency_format_(SEXP xSEXP, SEXP symbolSEXP, SEXP symbol_firstSEXP, SEXP groupingSEXP, SEXP decimalSEXP, SEXP groupSEXP) {
 BEGIN_RCPP
     Rcpp::RObject __result;
     Rcpp::RNGScope __rngScope;
@@ -23,7 +23,7 @@ END_RCPP
 }
 // currency_unformat_
 std::vector < double > currency_unformat_(std::vector < std::string > x, std::string decimal);
-RcppExport SEXP rrency_currency_unformat_(SEXP xSEXP, SEXP decimalSEXP) {
+RcppExport SEXP lucr_currency_unformat_(SEXP xSEXP, SEXP decimalSEXP) {
 BEGIN_RCPP
     Rcpp::RObject __result;
     Rcpp::RNGScope __rngScope;

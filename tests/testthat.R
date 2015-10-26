@@ -1,4 +1,4 @@
 library(testthat)
-library(rrency)
+library(lucr)
 
-test_check("rrency")
+test_check("lucr")

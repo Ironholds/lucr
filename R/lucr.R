@@ -4,7 +4,7 @@
 #' and convert between currencies.
 #'
 #' @docType package
-#' @name rrency
-#' @useDynLib rrency
+#' @name lucr
+#' @useDynLib lucr
 #' @importFrom Rcpp sourceCpp
 NULL
