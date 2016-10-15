@@ -71,42 +71,68 @@ private:
   
 public:
   
-  std::vector < std::string > currency_format_vector(std::vector < std::string > vals){
+  CharacterVector currency_format_vector(CharacterVector vals){
     
     // Set up
     unsigned int input_size = vals.size();
-    std::vector < std::string > output(input_size);
+    CharacterVector output(input_size);
     
     // Run
     for(unsigned int i = 0; i < input_size; i++){
-      output[i] = currency_format_single(vals[i]);
+      if(i % 10000 == 0){
+        Rcpp::checkUserInterrupt();
+      }
+      if(vals[i] == NA_STRING || vals[i] == "NA"){
+        output[i] = NA_STRING;
+      } else {
+        output[i] = currency_format_single(Rcpp::as<std::string>(vals[i]));
+      }
     }
     return output;
   }
   
-  std::vector < double > currency_unformat_vector(std::vector < std::string > vals){
+  NumericVector currency_unformat_vector(CharacterVector vals){
     
     // Set up
     unsigned int input_size = vals.size();
-    std::vector < double > output(input_size);
+    NumericVector output(input_size);
     
     // Run
     for(unsigned int i = 0; i < input_size; i++){
-      output[i] = currency_unformat_single(vals[i]);
+      if(i % 10000 == 0){
+        Rcpp::checkUserInterrupt();
+      }
+      if(vals[i] == NA_STRING || vals[i] == "NA"){
+        output[i] = NA_REAL;
+      } else {
+        output[i] = currency_unformat_single(Rcpp::as<std::string>(vals[i]));
+      }
     }
     return output;
   }
   
-  currency_format(std::string sym_val, bool sym_first, unsigned int group_val, std::string dec_sep,
-                  std::string group_sep){
+  currency_format(String sym_val, bool sym_first, unsigned int group_val, String dec_sep,
+                  String group_sep){
+    if(sym_val == NA_STRING){
+      Rcpp::stop("currency_symbol cannot be NA");
+    }
     symbol = sym_val;
     symbol_first = sym_first;
     grouping = group_val;
+    if(dec_sep == NA_STRING){
+      Rcpp::stop("The decimal separator cannot be NA");
+    }
     decimal = dec_sep;
+    if(group_sep == NA_STRING){
+      Rcpp::stop("The group separator cannot be NA");
+    }
     group = group_sep;
   }
   
-  currency_format(std::string dec_sep){
+  currency_format(String dec_sep){
+    if(dec_sep == NA_STRING){
+      Rcpp::stop("Decimal cannot be NA");
+    }
     decimal = dec_sep;
   }
 };

@@ -8,6 +8,13 @@ test_that("Complex amounts can be converted",{
   expect_that(to_currency(12000), equals("£12,000.00"))
 })
 
+test_that("NA amounts can be converted",{
+  expect_true(is.na(to_currency(NA_real_)))
+  expect_true(is.na(to_currency(NA_integer_)))
+  expect_true(is.na(from_currency(NA_character_)))
+})
+
+
 test_that("Complex amounts can be converted with non-default arguments",{
   expect_that(to_currency(12000, currency_symbol = "$", symbol_first = FALSE,
                           decimal_size = 3, decimal_delim = "q"), equals("12,000q000$"))
