@@ -13,8 +13,15 @@ currency sign, and the currency sign itself;
 
 ## Installation
 
+To get the release version:
+
 ```r
-devtools::install_github("ironholds/lucr", ref = "0.1.1")
+install.packages("lucr")
+```
+
+For the development version:
+```r
+devtools::install_github("ironholds/lucr")
 ```
 
 ## License
