@@ -1,6 +1,7 @@
 Package: lucr
 Title: Currency Formatting and Conversion
-Version: 0.1.0
+Version: 0.2.0
+Date: 2016-10-16
 Author: Oliver Keyes
 Maintainer: Oliver Keyes <ironholds@gmail.com>
 Description: Reformat currency-based data as numeric values (or numeric values
