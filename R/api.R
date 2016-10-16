@@ -91,6 +91,9 @@ list_currencies <- function(key, as_df = FALSE, ...){
 
 #'@title Get Historic Currency Data
 #'
+#'@description Retrieves historical data about a currency's value and exchange rate,
+#'relative to another currency.
+#'
 #'@param dates a vector of dates to get data for. Strings or date objects.
 #'
 #'@param currency the currency to use as a baseline. By default this is US Dollars; while it can

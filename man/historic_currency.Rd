@@ -18,4 +18,8 @@ fail.}
 
 \item{...}{Further arguments to pass to httr's \code{GET} function.}
 }
+\description{
+Retrieves historical data about a currency's value and exchange rate,
+relative to another currency.
+}
 
