@@ -3,13 +3,17 @@ Title: Currency Formatting and Conversion
 Version: 0.1.0
 Author: Oliver Keyes
 Maintainer: Oliver Keyes <ironholds@gmail.com>
-Description: Reformat currency-based data as numeric values (or numeric values as currency-based data) and convert between currencies.
+Description: Reformat currency-based data as numeric values (or numeric values
+    as currency-based data) and convert between currencies.
 License: MIT + file LICENSE
 LazyData: true
 URL: https://github.com/ironholds/lucr
 BugReports: https://github.com/ironholds/lucr/issues
 LinkingTo: Rcpp
-Imports: Rcpp,
-         httr
-Suggests: testthat
+Imports:
+    Rcpp,
+    httr
+Suggests:
+    testthat
 Encoding: UTF-8
+RoxygenNote: 5.0.1
