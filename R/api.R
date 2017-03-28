@@ -64,7 +64,7 @@ currency_convert <- function(x, from = "USD", to, key, ...){
   if(is.null(intermediary_rate)){
     stop("Conversion from that currency is not supported. See ?list_currencies for what is.")
   }
-  return( (x / intermediary_rate) * conversion_rate)
+  format(return( (x / intermediary_rate) * conversion_rate), scientific = FALSE)
 }
 
 #'@title Find Supported Currencies
