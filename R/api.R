@@ -64,7 +64,7 @@ currency_convert <- function(x, from = "USD", to, key, ...){
   if(is.null(intermediary_rate)){
     stop("Conversion from that currency is not supported. See ?list_currencies for what is.")
   }
-  return( (x / intermediary_rate) * conversion_rate)
+  format(return( (x / intermediary_rate) * conversion_rate), scientific = FALSE)
 }
 
 #'@title Find Supported Currencies
@@ -126,6 +126,76 @@ historic_currency <- function(dates, currency = "USD", key, ...){
     args <- paste0("base=", currency)
   }
   return(oer_query(path, key, args, ...))
+}
+
+#'@title Get Historical Currency Data Conversions
+#'
+#'@description Uses the Open Exchange Rates API to retrieve historical data about a currency's 
+#'value and exchange rate relative to another currency, and converts a series of amounts between
+#'two currencies at the specified historical exchange rate.
+#'
+#'@param x a vector of amounts, formatted as integer or numeric values.
+#'
+#'@param from the currency \code{x} is currently in. US Dollars by default.
+#'
+#'@param to the currency you \emph{want} \code{x} to be in.
+#'
+#'@param dates a vector of dates to get data for in \emph{yyyy-mm-dd} format. Strings or date objects.
+#'
+#'@param currency the currency to use as a baseline. By default this is US Dollars; while it can
+#'be changed to other currencies, that does require an 'Enterprise' OER key, and will otherwise fail.
+#'
+#'@param key Your Open Exchange Rates API key. See their \href{https://openexchangerates.org/signup}{access plans}
+#'(particularly the 'forever free' plan linked at the bottom).
+#'
+#'@param ... Further arguments to pass to httr's \code{GET} function.
+#'
+#'@export
+historic_currency_convert <- function(x, from = "USD", to, dates, key, currency="USD",...){
+  
+  # Check the data is integer/numeric
+  if(!any(is.numeric(x), is.integer(x))){
+    stop("You must provide integer or numeric values. If you have currency strings to convert, see ?from_currency")
+  }
+  
+  # Request the historic conversion rates
+  dates <- as.character(dates)
+  
+  if(length(dates) > 1){
+    d <- lapply(dates, historic_currency_convert, x = x, from = from, to = to, currency = currency, key = key, ...)
+    names(d) <- dates
+    format(return(d), scientific = FALSE)
+  }
+  
+  path <- paste0("historical/", dates, ".json")
+  
+  # Make the query and return
+  if(currency == "USD"){
+    args <- NULL
+  } else {
+    args <- paste0("base=", currency)
+  }
+  rates <- oer_query(path, key, args, ...)
+  
+  # Check we have the currency
+  conversion_rate <- rates$rates[[to]]
+  if(is.null(conversion_rate)){
+    stop("Conversion to that currency is not supported. See ?list_currencies for what is.")
+  }
+  
+  # These are going to be coming back in USD.
+  # If the user actually has USD that's fine.
+  if(from == "USD"){
+    format(return(x * conversion_rate), scientific = FALSE)
+  }
+  
+  # Otherwise we need to convert TO USD and then to the currency
+  # we want.
+  intermediary_rate <- rates$rates[[from]]
+  if(is.null(intermediary_rate)){
+    stop("Conversion from that currency is not supported. See ?list_currencies for what is.")
+  }
+  format(return((x / intermediary_rate) * conversion_rate), scientific = FALSE)
 }
 
 #'@title Get Current Conversion Rates
